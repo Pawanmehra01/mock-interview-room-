@@ -11,7 +11,9 @@ const name = sessionStorage.getItem('name')
 
   const [code, setCode] = useState('')
   const [language, setLanguage] = useState('javascript')
-  const [participants, setParticipants] = useState([])
+  const [participants, setParticipants] = useState([
+  { name, role }
+])
   const [aiResponse, setAiResponse] = useState('')
   const [aiLoading, setAiLoading] = useState(false)
   const [userQuery, setUserQuery] = useState('')

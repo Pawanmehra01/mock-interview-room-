@@ -31,10 +31,10 @@ export default function JoinRoom() {
         })
       })
       const data = await res.json()
-      localStorage.setItem('token', data.token)
-      localStorage.setItem('role', 'interviewer')
-      localStorage.setItem('roomId', data.room.id)
-      localStorage.setItem('name', name)
+      sessionStorage.setItem('token', data.token)
+      sessionStorage.setItem('role', 'interviewer')
+      sessionStorage.setItem('roomId', data.room.id)
+      sessionStorage.setItem('name', name)
       navigate(`/room/${data.room.id}`)
     } catch (err) {
       setError('Failed to create room. Is the server running?')
@@ -62,9 +62,9 @@ export default function JoinRoom() {
         return
       }
       sessionStorage.setItem('token', data.token)
-sessionStorage.setItem('role', 'interviewer')
-sessionStorage.setItem('roomId', data.room.id)
-sessionStorage.setItem('name', name)
+      sessionStorage.setItem('role', 'candidate')
+      sessionStorage.setItem('roomId', roomIdFromUrl)
+      sessionStorage.setItem('name', name)
       navigate(`/room/${roomIdFromUrl}`)
     } catch (err) {
       setError('Failed to join room. Is the server running?')
