@@ -10,18 +10,29 @@ const httpServer = createServer(app);
 
 const io = new Server(httpServer, {
   cors: {
-    origin: ['http://localhost:5173', 'http://localhost:5174'],
+    origin: [
+      'http://localhost:5173',
+      'http://localhost:5174',
+      'https://mock-interview-room-gold.vercel.app',
+      process.env.CLIENT_URL
+    ],
     methods: ['GET', 'POST'],
     credentials: true
   },
-  transports: ['websocket']
+  transports: ['websocket', 'polling']
 });
 
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://localhost:5174'],
+  origin: [
+    'http://localhost:5173',
+    'http://localhost:5174',
+    'https://mock-interview-room-gold.vercel.app',
+    process.env.CLIENT_URL
+  ],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }));
+
 app.use(express.json());
 
 app.use('/api/rooms', require('./routes/rooms'));
